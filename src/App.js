@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {EnhancedUser} from './HOCAddDispatch';
+import { EnhancedUser } from './HOCAddDispatch';
 
 class App extends Component {
   render() {
