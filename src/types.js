@@ -5,7 +5,7 @@ export type OperatorCalcKey = {
   expressionKey: true,
   arity: number,
   operator: string,
-  fn: <Operand>(...args: Operand) => Operand,
+  fn: (...args: Array<number>) => number,
 };
 
 export type OperandCalcKey = {
@@ -13,19 +13,28 @@ export type OperandCalcKey = {
   operand: number,
 };
 
-export type StackItem = {
-  value: number,
-};
-
 export type CalcKey = OperandCalcKey | OperatorCalcKey;
 
-export type MyFakeAction = {| type: 'MY_FAKE_ACTION' |};
-export type MyFakeAction2 = {| type: 'MY_FAKE_ACTION2' |};
+export type StackItem = {
+  value: number,
+  result: boolean,
+};
+export type Stack = StackItem[];
 
-export type Action = MyFakeAction | MyFakeAction2;
+export type UserNumericInputAction = {|
+  type: 'USER_NUMERIC_INPUT',
+  key: OperandCalcKey,
+|};
+
+export type UserExpressionInputAction = {|
+  type: 'USER_EXPRESSION_INPUT',
+  key: OperatorCalcKey,
+|};
+
+export type Action = UserNumericInputAction | UserExpressionInputAction;
 
 export type State = {|
-  stack: StackItem[],
+  stack: Stack,
 |};
 
 export type GetState = () => State;

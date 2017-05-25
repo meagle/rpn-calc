@@ -1,7 +1,7 @@
 import { createStore as baseCreateStore, applyMiddleware } from 'redux';
 import compose from 'ramda/src/compose';
 import thunk from 'redux-thunk';
-import Thunk from './typesf';
+import Thunk from './types';
 
 const createStore = compose(
   applyMiddleware((thunk: Thunk)),
