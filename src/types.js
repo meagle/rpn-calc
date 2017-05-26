@@ -11,8 +11,6 @@ export type OperandCalcKey = {|
   operand: string,
 |};
 
-export type CalcKey = OperandCalcKey | OperatorCalcKey;
-
 export type Stack = number[];
 
 export type UserNumericInputAction = {|
@@ -30,10 +28,16 @@ export type AddToStackAction = {|
   value: number,
 |};
 
+export type RemoveStackAction = {|
+  type: 'REMOVE_FROM_STACK',
+  userInput?: string,
+|};
+
 export type Action =
   | UserNumericInputAction
   | UserExpressionInputAction
-  | AddToStackAction;
+  | AddToStackAction
+  | RemoveStackAction;
 
 export type State = {|
   stack: Stack,

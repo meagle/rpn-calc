@@ -5,8 +5,12 @@ import type { Stack, Action } from './types';
 export const reduceInput = (input: string = '', action: Action): string => {
   switch (action.type) {
     case 'USER_NUMERIC_INPUT':
-      // TODO: add a check to ensure we only get [0-9]|\.
       return `${input}${action.key.operand}`;
+    case 'REMOVE_FROM_STACK':
+      if (input.length > 0) {
+        return input.slice(0, input.length - 1);
+      }
+      return input;
     default:
       return input;
   }
@@ -16,6 +20,11 @@ export const reduceStack = (stack: Stack = [], action: Action): Stack => {
   switch (action.type) {
     case 'ADD_TO_STACK':
       stack.push(action.value);
+      return stack;
+    case 'REMOVE_FROM_STACK':
+      if (action.userInput === '') {
+        stack.shift();
+      }
       return stack;
     case 'USER_OPERATOR_INPUT':
       if (stack.length === 0) {

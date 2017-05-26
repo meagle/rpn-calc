@@ -56,6 +56,48 @@ test('Stack can add new input as a new stack item', () => {
   expect(actual).toEqual(expected);
 });
 
+test('Remove first stack item when there is no user Input', () => {
+  const stackExpected: Stack = [2, 3, 4, 5];
+
+  const stackAcutal: Stack = reduceStack(
+    [1, 2, 3, 4, 5],
+    ({
+      type: 'REMOVE_FROM_STACK',
+      userInput: '',
+    }: Action)
+  );
+
+  expect(stackAcutal).toEqual(stackExpected);
+
+  const currentInputExpected = '';
+  const currentInputActual = reduceInput('', {
+    type: 'REMOVE_FROM_STACK',
+  });
+
+  expect(currentInputActual).toBe(currentInputExpected);
+});
+
+test('Remove current stack character when there is user Input', () => {
+  const expected: Stack = [1, 2, 3, 4, 5];
+
+  const actual: Stack = reduceStack(
+    [1, 2, 3, 4, 5],
+    ({
+      type: 'REMOVE_FROM_STACK',
+      userInput: '3.14',
+    }: Action)
+  );
+
+  expect(actual).toEqual(expected);
+
+  const currentInputExpected = '3.1';
+  const currentInputActual = reduceInput('3.14', {
+    type: 'REMOVE_FROM_STACK',
+    userInput: '3.14',
+  });
+  expect(currentInputActual).toBe(currentInputExpected);
+});
+
 test('Stack can run a unary operation', () => {
   const expected: Stack = [8];
 
