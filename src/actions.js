@@ -7,9 +7,9 @@ export const addInputToStack = (input: number | string): Action => ({
   value: Number(input),
 });
 
-export const removeFromStack = (currentInput?: string): Action => ({
+export const removeFromStack = (userInput?: string): Action => ({
   type: 'REMOVE_FROM_STACK',
-  userInput: currentInput,
+  userInput,
 });
 
 export const sendOperandToStack = (operandKey: OperandCalcKey): Action => {

@@ -42,4 +42,5 @@ export const reduceStack = (stack: Stack = [], action: Action): Stack => {
 
 export default combineReducers({
   stack: reduceStack,
+  input: reduceInput,
 });

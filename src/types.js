@@ -45,6 +45,7 @@ export type Action =
 
 export type State = {|
   stack: Stack,
+  input: string,
 |};
 
 export type GetState = () => State;

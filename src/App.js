@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { EnhancedUser } from './HOCAddDispatch';
+import { OPERAND_KEYS } from './keys';
+import OperandKey from './components/OperandKey.js';
 
 class App extends Component {
   render() {
@@ -15,6 +17,10 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload!
         </p>
         <EnhancedUser name="Mark" status="active" />
+        {Object.keys(OPERAND_KEYS).map(key => (
+          <OperandKey calcKey={OPERAND_KEYS[key]} />
+        ))}
+
       </div>
     );
   }
