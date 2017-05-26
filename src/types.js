@@ -1,25 +1,19 @@
 // @flow
 import type { Dispatch as ReduxDispatch } from 'redux';
 
-export type OperatorCalcKey = {
-  expressionKey: true,
+export type OperatorCalcKey = {|
   arity: number,
   operator: string,
   fn: (...args: Array<number>) => number,
-};
+|};
 
-export type OperandCalcKey = {
-  expressionKey: false,
-  operand: number,
-};
+export type OperandCalcKey = {|
+  operand: string,
+|};
 
 export type CalcKey = OperandCalcKey | OperatorCalcKey;
 
-export type StackItem = {
-  value: number,
-  result: boolean,
-};
-export type Stack = StackItem[];
+export type Stack = number[];
 
 export type UserNumericInputAction = {|
   type: 'USER_NUMERIC_INPUT',
@@ -27,11 +21,19 @@ export type UserNumericInputAction = {|
 |};
 
 export type UserExpressionInputAction = {|
-  type: 'USER_EXPRESSION_INPUT',
+  type: 'USER_OPERATOR_INPUT',
   key: OperatorCalcKey,
 |};
 
-export type Action = UserNumericInputAction | UserExpressionInputAction;
+export type AddToStackAction = {|
+  type: 'ADD_TO_STACK',
+  value: number,
+|};
+
+export type Action =
+  | UserNumericInputAction
+  | UserExpressionInputAction
+  | AddToStackAction;
 
 export type State = {|
   stack: Stack,
