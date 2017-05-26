@@ -3,13 +3,17 @@ import type { Dispatch as ReduxDispatch } from 'redux';
 
 export type OperatorCalcKey = {|
   arity: number,
+  keyValue?: string,
   operator: string,
   fn: (...args: Array<number>) => number,
 |};
 
 export type OperandCalcKey = {|
+  keyValue: string,
   operand: string,
 |};
+
+export type CalcKey = OperandCalcKey | OperatorCalcKey;
 
 export type Stack = number[];
 

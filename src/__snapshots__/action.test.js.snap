@@ -5,6 +5,7 @@ Object {
   "key": Object {
     "arity": 1,
     "fn": [Function],
+    "keyValue": "s",
     "operator": "sqrt",
   },
   "type": "USER_OPERATOR_INPUT",
