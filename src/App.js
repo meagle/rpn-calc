@@ -12,12 +12,15 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>RPN Calc</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload!
+          This calcuator functions like an RPN calculator.
+          This is a work in progress.  You can use Redux Tools
+          to see this work until I can continue development and
+          clean up the UI. [Screen here]
         </p>
-        <EnhancedUser name="Mark" status="active" />
+        {/* <EnhancedUser name="Mark" status="active" /> */}
         {Object.keys(OPERAND_KEYS).map(key => (
           <OperandKey key={key} calcKey={OPERAND_KEYS[key]} />
         ))}
