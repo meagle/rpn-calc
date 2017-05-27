@@ -2,9 +2,9 @@
 
 import type { Action, OperandCalcKey, OperatorCalcKey } from './types';
 
-export const addInputToStack = (input: number | string): Action => ({
+export const addInputToStack = (userInput: string): Action => ({
   type: 'ADD_TO_STACK',
-  value: Number(input),
+  userInput,
 });
 
 export const removeFromStack = (userInput?: string): Action => ({
@@ -20,7 +20,11 @@ export const sendOperandToStack = (operandKey: OperandCalcKey): Action => {
   };
 };
 
-export const sendOperatorToStack = (operatorKey: OperatorCalcKey): Action => ({
+export const sendOperatorToStack = (
+  operatorKey: OperatorCalcKey,
+  userInput: string
+): Action => ({
   type: 'USER_OPERATOR_INPUT',
   key: operatorKey,
+  userInput,
 });

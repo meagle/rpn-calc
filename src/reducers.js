@@ -11,6 +11,9 @@ export const reduceInput = (input: string = '', action: Action): string => {
         return input.slice(0, input.length - 1);
       }
       return input;
+    case 'USER_OPERATOR_INPUT':
+    case 'ADD_TO_STACK':
+      return '';
     default:
       return input;
   }
@@ -19,18 +22,21 @@ export const reduceInput = (input: string = '', action: Action): string => {
 export const reduceStack = (stack: Stack = [], action: Action): Stack => {
   switch (action.type) {
     case 'ADD_TO_STACK':
-      stack.push(action.value);
+      stack.unshift(Number(action.userInput));
       return stack;
     case 'REMOVE_FROM_STACK':
-      if (action.userInput === '') {
+      if (!action.userInput) {
         stack.shift();
       }
       return stack;
     case 'USER_OPERATOR_INPUT':
-      if (stack.length === 0) {
-        return stack;
+      const { userInput } = action;
+      if (action.key.arity === 1 && userInput) {
+        stack.unshift(action.key.fn(Number(userInput)));
       } else if (action.key.arity === 1) {
         stack[0] = action.key.fn(stack[0]);
+      } else if (action.key.arity === 2 && stack.length > 0 && userInput) {
+        stack[0] = action.key.fn(Number(userInput), stack[0]);
       } else if (action.key.arity === 2 && stack.length > 1) {
         stack[0] = action.key.fn(stack.shift(), stack[0]);
       }

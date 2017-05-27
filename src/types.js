@@ -25,11 +25,12 @@ export type UserNumericInputAction = {|
 export type UserExpressionInputAction = {|
   type: 'USER_OPERATOR_INPUT',
   key: OperatorCalcKey,
+  userInput?: string,
 |};
 
 export type AddToStackAction = {|
   type: 'ADD_TO_STACK',
-  value: number,
+  userInput: string,
 |};
 
 export type RemoveStackAction = {|

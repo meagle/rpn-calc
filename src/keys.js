@@ -36,7 +36,7 @@ export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
     arity: 2,
     keyValue: '-',
     operator: '-',
-    fn: (a, b) => a - b,
+    fn: (a, b) => b - a,
   },
   mult: {
     arity: 2,

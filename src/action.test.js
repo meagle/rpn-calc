@@ -18,16 +18,16 @@ test('Sends an operand to the stack', () => {
 });
 
 test('Sends an operator to the stack', () => {
-  const actual = sendOperatorToStack(OPERATOR_KEYS['sqrt']);
+  const actual = sendOperatorToStack(OPERATOR_KEYS['sqrt'], '2');
   expect(actual).toMatchSnapshot();
 });
 
 test('Adds the current input to the stack', () => {
   const expected = {
     type: 'ADD_TO_STACK',
-    value: 42,
+    userInput: '42',
   };
-  const actual = addInputToStack(42);
+  const actual = addInputToStack('42');
   expect(actual).toEqual(expected);
 
   const actual2 = addInputToStack('42');

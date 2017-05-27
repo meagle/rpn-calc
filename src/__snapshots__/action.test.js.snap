@@ -9,5 +9,6 @@ Object {
     "operator": "sqrt",
   },
   "type": "USER_OPERATOR_INPUT",
+  "userInput": "2",
 }
 `;

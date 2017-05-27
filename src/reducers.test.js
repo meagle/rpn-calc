@@ -29,7 +29,7 @@ test('Stack can add new input as a new stack item', () => {
     [],
     ({
       type: 'ADD_TO_STACK',
-      value: 3,
+      userInput: '3',
     }: Action)
   );
 
@@ -78,7 +78,7 @@ test('Remove current stack character when there is user Input', () => {
   expect(currentInputActual).toBe(currentInputExpected);
 });
 
-test('Stack can run a unary operation', () => {
+test('Stack can run a unary operation on first element on stack', () => {
   const expected: Stack = [8];
 
   const actual: Stack = reduceStack(
@@ -92,7 +92,32 @@ test('Stack can run a unary operation', () => {
   expect(actual).toEqual(expected);
 });
 
-test('Stack can run an operation with arity 2', () => {
+test('Stack can run a unary operation on current input', () => {
+  const expected: Stack = [10, 8];
+  const expectedInput = '';
+
+  const actual: Stack = reduceStack(
+    [8],
+    ({
+      type: 'USER_OPERATOR_INPUT',
+      key: OPERATOR_KEYS['sqrt'],
+      userInput: '100',
+    }: Action)
+  );
+  const actualInput: string = reduceInput(
+    '100',
+    ({
+      type: 'USER_OPERATOR_INPUT',
+      key: OPERATOR_KEYS['sqrt'],
+      userInput: '100',
+    }: Action)
+  );
+
+  expect(actual).toEqual(expected);
+  expect(actualInput).toEqual(expectedInput);
+});
+
+test('Stack can run an operation with arity 2 on first element on stack', () => {
   const expected: Stack = [12, 5];
 
   const actual: Stack = reduceStack(
@@ -100,6 +125,22 @@ test('Stack can run an operation with arity 2', () => {
     ({
       type: 'USER_OPERATOR_INPUT',
       key: OPERATOR_KEYS['add'],
+      userInput: '',
+    }: Action)
+  );
+
+  expect(actual).toEqual(expected);
+});
+
+test('Stack can run an operation with arity 2 on current input', () => {
+  const expected: Stack = [6, 9, 5];
+
+  const actual: Stack = reduceStack(
+    [3, 9, 5],
+    ({
+      type: 'USER_OPERATOR_INPUT',
+      key: OPERATOR_KEYS['add'],
+      userInput: '3',
     }: Action)
   );
 

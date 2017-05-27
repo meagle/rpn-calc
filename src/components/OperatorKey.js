@@ -5,30 +5,33 @@ import compose from 'ramda/src/compose';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import type { OperatorCalcKey, State } from '../types';
 import * as actions from '../actions';
+import '../css/CalculatorKey.css';
 
 type Props = {
   calcKey: OperatorCalcKey,
   sendOperatorToStack: Function,
+  userInput: string,
 };
 
 class OperatorKey extends React.Component<*, Props, *> {
   render() {
     const { calcKey } = this.props;
     return (
-      <div>
-        calcKey.keyValue &&
-        <KeyHandler
-          keyEventName={KEYPRESS}
-          keyValue={calcKey.operator}
-          onKeyHandle={this._sendOperator}
-        />
+      <div className="Calc-key" onClick={this._sendOperator}>
+        {calcKey.keyValue &&
+          <KeyHandler
+            keyEventName={KEYPRESS}
+            keyValue={calcKey.keyValue}
+            onKeyHandle={this._sendOperator}
+          />}
         <span>{calcKey.operator}</span>
       </div>
     );
   }
 
   _sendOperator = () => {
-    this.props.sendOperatorToStack(this.props.calcKey);
+    console.log(this.props.calcKey.operator);
+    this.props.sendOperatorToStack(this.props.calcKey, this.props.userInput);
   };
 }
 
