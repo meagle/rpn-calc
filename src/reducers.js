@@ -34,16 +34,13 @@ export const reduceStack = (stack: Stack = [], action: Action): Stack => {
       if (action.key.arity === 1 && userInput) {
         stack = [action.key.fn(Number(userInput)), ...stack];
       } else if (action.key.arity === 1) {
-        // stack[0] = action.key.fn(stack[0]);
         stack = [action.key.fn(stack[0]), ...stack.slice(1, stack.length)];
       } else if (action.key.arity === 2 && stack.length > 0 && userInput) {
-        // stack[0] = action.key.fn(Number(userInput), stack[0]);
         stack = [
           action.key.fn(Number(userInput), stack[0]),
           ...stack.slice(1, stack.length),
         ];
       } else if (action.key.arity === 2 && stack.length > 1) {
-        // stack[0] = action.key.fn(stack.shift(), stack[0]);
         stack = [
           action.key.fn(stack.shift(), stack[0]),
           ...stack.slice(1, stack.length),
