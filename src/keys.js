@@ -26,6 +26,12 @@ const generateOperands = () => {
 export const OPERAND_KEYS: { [string]: OperandCalcKey } = generateOperands();
 
 export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
+  enter: {
+    arity: 0,
+    keyValue: 'enter',
+    operator: 'enter',
+    fn: a => a,
+  },
   add: {
     arity: 2,
     keyValue: '+',

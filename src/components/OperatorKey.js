@@ -9,8 +9,9 @@ import '../css/CalculatorKey.css';
 
 type Props = {
   calcKey: OperatorCalcKey,
-  sendOperatorToStack: Function,
   userInput: string,
+  sendOperatorToStack: typeof actions.sendOperatorToStack,
+  addInputToStack: typeof actions.addInputToStack,
 };
 
 class OperatorKey extends React.Component<*, Props, *> {
@@ -30,8 +31,11 @@ class OperatorKey extends React.Component<*, Props, *> {
   }
 
   _sendOperator = () => {
-    console.log(this.props.calcKey.operator);
-    this.props.sendOperatorToStack(this.props.calcKey, this.props.userInput);
+    if (this.props.calcKey.operator === 'enter') {
+      this.props.addInputToStack(this.props.userInput);
+    } else {
+      this.props.sendOperatorToStack(this.props.calcKey, this.props.userInput);
+    }
   };
 }
 
