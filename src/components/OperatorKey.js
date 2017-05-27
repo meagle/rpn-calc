@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import compose from 'ramda/src/compose';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import type { OperatorCalcKey, State } from '../types';
 import * as actions from '../actions';
@@ -31,7 +30,7 @@ class OperatorKey extends React.Component<*, Props, *> {
   }
 
   _sendOperator = () => {
-    if (this.props.calcKey.operator === 'enter') {
+    if (this.props.calcKey.operator === 'Enter') {
       this.props.addInputToStack(this.props.userInput);
     } else {
       this.props.sendOperatorToStack(this.props.calcKey, this.props.userInput);
@@ -45,4 +44,4 @@ const mapStateToProps = (state: State) => ({
 
 export { OperatorKey as RawOperatorKey };
 
-export default compose(connect(mapStateToProps, actions))(OperatorKey);
+export default connect(mapStateToProps, actions)(OperatorKey);

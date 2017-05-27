@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { EnhancedUser } from './HOCAddDispatch';
+// import { EnhancedUser } from './HOCAddDispatch';
 import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
-import OperandKey from './components/OperandKey.js';
-import OperatorKey from './components/OperatorKey.js';
+import OperandKey from './components/OperandKey';
+import OperatorKey from './components/OperatorKey';
+import Results from './components/Results';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           to see this work until I can continue development and
           clean up the UI. [Screen here]
         </p>
+        <Results />
         {/* <EnhancedUser name="Mark" status="active" /> */}
         {Object.keys(OPERAND_KEYS).map(key => (
           <OperandKey key={key} calcKey={OPERAND_KEYS[key]} />

@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import compose from 'ramda/src/compose';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import type { OperandCalcKey, State } from '../types';
 import * as actions from '../actions';
@@ -40,4 +39,4 @@ const mapStateToProps = (state: State) => ({
 
 export { OperandKey as RawOperandKey };
 
-export default compose(connect(mapStateToProps, actions))(OperandKey);
+export default connect(mapStateToProps, actions)(OperandKey);

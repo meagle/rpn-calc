@@ -28,8 +28,8 @@ export const OPERAND_KEYS: { [string]: OperandCalcKey } = generateOperands();
 export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
   enter: {
     arity: 0,
-    keyValue: 'enter',
-    operator: 'enter',
+    keyValue: 'Enter',
+    operator: 'Enter',
     fn: a => a,
   },
   add: {
@@ -54,7 +54,7 @@ export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
     arity: 2,
     keyValue: '/',
     operator: '/',
-    fn: (a, b) => a / b,
+    fn: (a, b) => b / a,
   },
   sqrt: {
     arity: 1,
