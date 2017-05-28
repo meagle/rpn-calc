@@ -8,6 +8,7 @@ import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
 import OperandKey from './components/OperandKey';
 import OperatorKey from './components/OperatorKey';
 import Results from './components/Results';
+import type { OperatorCalcKey, OperandCalcKey } from '../types';
 
 type Props = {
   userInput: string,
@@ -16,7 +17,7 @@ type Props = {
 };
 
 class App extends Component<*, Props, *> {
-  sendOperator(calcKey) {
+  sendOperator(calcKey: OperatorCalcKey) {
     const { userInput } = this.props;
     if (calcKey.operator === 'Enter') {
       this.props.addInputToStack(userInput);
@@ -24,7 +25,7 @@ class App extends Component<*, Props, *> {
       this.props.sendOperatorToStack(calcKey, userInput);
     }
   }
-  sendOperand(calcKey) {
+  sendOperand(calcKey: OperandCalcKey) {
     this.props.sendOperandToStack(calcKey);
   }
   render() {

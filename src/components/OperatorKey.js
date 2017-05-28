@@ -6,7 +6,7 @@ import '../css/CalculatorKey.css';
 
 type Props = {
   calcKey: OperatorCalcKey,
-  sendOperatorKey: Function,
+  sendOperatorKey: OperatorCalcKey => void,
 };
 
 class OperatorKey extends React.Component<*, Props, *> {

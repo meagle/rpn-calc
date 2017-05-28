@@ -2,12 +2,11 @@
 import React from 'react';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import type { OperandCalcKey } from '../types';
-import * as actions from '../actions';
 import '../css/CalculatorKey.css';
 
 type Props = {
   calcKey: OperandCalcKey,
-  sendOperandToStack: typeof actions.sendOperandToStack,
+  sendOperandKey: OperandCalcKey => void,
 };
 
 class OperandKey extends React.Component<*, Props, *> {
