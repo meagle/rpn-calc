@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StackItem from './StackItem';
+import Input from './Input';
 import type { State, Stack } from '../types';
 
 type Props = {
@@ -12,11 +13,12 @@ type Props = {
 const Results = ({ input, stack }: Props) => (
   <div>
     <ul>
-      {stack.map((item, idx) => <StackItem key={idx} item={item} />)}
+      {stack
+        .slice(0)
+        .reverse()
+        .map((item, idx) => <StackItem key={idx} item={item} />)}
+      <Input input={input} />
     </ul>
-    {stack.length}
-    {' : '}
-    {input}
   </div>
 );
 
