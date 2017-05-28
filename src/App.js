@@ -17,9 +17,6 @@ class App extends Component {
         </div>
         <p className="App-intro">
           This calcuator functions like an RPN calculator.
-          This is a work in progress.  You can use Redux Tools
-          to see this work until I can continue development and
-          clean up the UI. [Screen here]
         </p>
         <Results />
         {/* <EnhancedUser name="Mark" status="active" /> */}
@@ -30,7 +27,6 @@ class App extends Component {
         {Object.keys(OPERATOR_KEYS).map(key => (
           <OperatorKey key={key} calcKey={OPERATOR_KEYS[key]} />
         ))}
-
       </div>
     );
   }

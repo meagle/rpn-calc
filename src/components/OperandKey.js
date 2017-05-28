@@ -28,15 +28,10 @@ class OperandKey extends React.Component<*, Props, *> {
 
   _sendOperand = (e: SyntheticMouseEvent) => {
     e.preventDefault();
-    console.log(this.props.calcKey.operand);
     this.props.sendOperandToStack(this.props.calcKey);
   };
 }
 
-const mapStateToProps = (state: State) => ({
-  userInput: state.input,
-});
-
 export { OperandKey as RawOperandKey };
 
-export default connect(mapStateToProps, actions)(OperandKey);
+export default connect(null, actions)(OperandKey);

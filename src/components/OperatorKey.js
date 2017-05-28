@@ -29,7 +29,8 @@ class OperatorKey extends React.Component<*, Props, *> {
     );
   }
 
-  _sendOperator = () => {
+  _sendOperator = (e: SyntheticMouseEvent) => {
+    e.preventDefault();
     if (this.props.calcKey.operator === 'Enter') {
       this.props.addInputToStack(this.props.userInput);
     } else {
