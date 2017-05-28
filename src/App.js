@@ -19,8 +19,8 @@ type Props = {
 };
 
 class App extends Component<*, Props, *> {
-  sendOperator: Function;
-  sendOperand: Function;
+  sendOperator: (calcKey: OperatorCalcKey) => void;
+  sendOperand: (calcKey: OperandCalcKey) => void;
 
   constructor(props) {
     super(props);
