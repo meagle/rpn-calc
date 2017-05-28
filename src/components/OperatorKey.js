@@ -1,16 +1,12 @@
 // @flow
 import React from 'react';
-import { connect } from 'react-redux';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
-import type { OperatorCalcKey, State } from '../types';
-import * as actions from '../actions';
+import type { OperatorCalcKey } from '../types';
 import '../css/CalculatorKey.css';
 
 type Props = {
   calcKey: OperatorCalcKey,
-  userInput: string,
-  sendOperatorToStack: typeof actions.sendOperatorToStack,
-  addInputToStack: typeof actions.addInputToStack,
+  sendOperatorKey: Function,
 };
 
 class OperatorKey extends React.Component<*, Props, *> {
@@ -31,18 +27,8 @@ class OperatorKey extends React.Component<*, Props, *> {
 
   _sendOperator = (e: SyntheticMouseEvent) => {
     e.preventDefault();
-    if (this.props.calcKey.operator === 'Enter') {
-      this.props.addInputToStack(this.props.userInput);
-    } else {
-      this.props.sendOperatorToStack(this.props.calcKey, this.props.userInput);
-    }
+    this.props.sendOperatorKey(this.props.calcKey);
   };
 }
 
-const mapStateToProps = (state: State) => ({
-  userInput: state.input,
-});
-
-export { OperatorKey as RawOperatorKey };
-
-export default connect(mapStateToProps, actions)(OperatorKey);
+export default OperatorKey;

@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
-import { connect } from 'react-redux';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
-import type { OperandCalcKey, State } from '../types';
+import type { OperandCalcKey } from '../types';
 import * as actions from '../actions';
 import '../css/CalculatorKey.css';
 
@@ -28,10 +27,8 @@ class OperandKey extends React.Component<*, Props, *> {
 
   _sendOperand = (e: SyntheticMouseEvent) => {
     e.preventDefault();
-    this.props.sendOperandToStack(this.props.calcKey);
+    this.props.sendOperandKey(this.props.calcKey);
   };
 }
 
-export { OperandKey as RawOperandKey };
-
-export default connect(null, actions)(OperandKey);
+export default OperandKey;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from './actions';
 import logo from './logo.svg';
 import './App.css';
 // import { EnhancedUser } from './HOCAddDispatch';
@@ -7,7 +9,24 @@ import OperandKey from './components/OperandKey';
 import OperatorKey from './components/OperatorKey';
 import Results from './components/Results';
 
-class App extends Component {
+type Props = {
+  userInput: string,
+  sendOperatorToStack: typeof actions.sendOperatorToStack,
+  addInputToStack: typeof actions.addInputToStack,
+};
+
+class App extends Component<*, Props, *> {
+  sendOperator(calcKey) {
+    const { userInput } = this.props;
+    if (calcKey.operator === 'Enter') {
+      this.props.addInputToStack(userInput);
+    } else {
+      this.props.sendOperatorToStack(calcKey, userInput);
+    }
+  }
+  sendOperand(calcKey) {
+    this.props.sendOperandToStack(calcKey);
+  }
   render() {
     return (
       <div className="App">
@@ -21,15 +40,27 @@ class App extends Component {
         <Results />
         {/* <EnhancedUser name="Mark" status="active" /> */}
         {Object.keys(OPERAND_KEYS).map(key => (
-          <OperandKey key={key} calcKey={OPERAND_KEYS[key]} />
+          <OperandKey
+            key={key}
+            calcKey={OPERAND_KEYS[key]}
+            sendOperandKey={this.sendOperand.bind(this)}
+          />
         ))}
 
         {Object.keys(OPERATOR_KEYS).map(key => (
-          <OperatorKey key={key} calcKey={OPERATOR_KEYS[key]} />
+          <OperatorKey
+            key={key}
+            calcKey={OPERATOR_KEYS[key]}
+            sendOperatorKey={this.sendOperator.bind(this)}
+          />
         ))}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state: State) => ({
+  userInput: state.input,
+});
+
+export default connect(mapStateToProps, actions)(App);
