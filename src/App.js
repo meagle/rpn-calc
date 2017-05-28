@@ -19,6 +19,15 @@ type Props = {
 };
 
 class App extends Component<*, Props, *> {
+  sendOperator: Function;
+  sendOperand: Function;
+
+  constructor(props) {
+    super(props);
+    this.sendOperator = this.sendOperator.bind(this);
+    this.sendOperand = this.sendOperand.bind(this);
+  }
+
   sendOperator(calcKey: OperatorCalcKey) {
     const { userInput } = this.props;
     if (calcKey.operator === 'Enter') {
@@ -27,6 +36,7 @@ class App extends Component<*, Props, *> {
       this.props.sendOperatorToStack(calcKey, userInput);
     }
   }
+
   sendOperand(calcKey: OperandCalcKey) {
     this.props.sendOperandToStack(calcKey);
   }
@@ -46,7 +56,7 @@ class App extends Component<*, Props, *> {
           <OperandKey
             key={key}
             calcKey={OPERAND_KEYS[key]}
-            sendOperandKey={this.sendOperand.bind(this)}
+            sendOperandKey={this.sendOperand}
           />
         ))}
 
@@ -54,7 +64,7 @@ class App extends Component<*, Props, *> {
           <OperatorKey
             key={key}
             calcKey={OPERATOR_KEYS[key]}
-            sendOperatorKey={this.sendOperator.bind(this)}
+            sendOperatorKey={this.sendOperator}
           />
         ))}
       </div>
