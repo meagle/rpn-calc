@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
@@ -8,12 +9,13 @@ import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
 import OperandKey from './components/OperandKey';
 import OperatorKey from './components/OperatorKey';
 import Results from './components/Results';
-import type { OperatorCalcKey, OperandCalcKey } from '../types';
+import type { State, OperatorCalcKey, OperandCalcKey } from './types';
 
 type Props = {
   userInput: string,
   sendOperatorToStack: typeof actions.sendOperatorToStack,
   addInputToStack: typeof actions.addInputToStack,
+  sendOperandToStack: typeof actions.sendOperandToStack,
 };
 
 class App extends Component<*, Props, *> {
