@@ -7,7 +7,7 @@ type Props = {
 };
 
 const StackItem = ({ item }: Props) => (
-  <li className="Result-item">
+  <li className="list-group-item">
     {item}
   </li>
 );

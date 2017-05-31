@@ -12,7 +12,7 @@ type Props = {
 
 const Results = ({ input, stack }: Props) => (
   <div>
-    <ul>
+    <ul className="list-group">
       {stack
         .slice(0)
         .reverse()

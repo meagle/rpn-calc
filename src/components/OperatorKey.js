@@ -2,6 +2,7 @@
 import React from 'react';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 import type { OperatorCalcKey } from '../types';
+import Button from 'react-bootstrap/lib/Button';
 import '../css/CalculatorKey.css';
 
 type Props = {
@@ -20,7 +21,9 @@ class OperatorKey extends React.Component<*, Props, *> {
             keyValue={calcKey.keyValue}
             onKeyHandle={this._sendOperator}
           />}
-        <span>{calcKey.operator}</span>
+        <Button bsStyle="primary" bsSize="large">
+          {calcKey.operator}
+        </Button>
       </div>
     );
   }

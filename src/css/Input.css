@@ -1,4 +1,9 @@
 .Input {
   background-color: #eee;
-  list-style: none;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+  height:  40px;
 }

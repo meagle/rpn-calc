@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 // import { EnhancedUser } from './HOCAddDispatch';
 import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
 import OperandKey from './components/OperandKey';
@@ -19,27 +19,18 @@ type Props = {
 };
 
 class App extends Component<*, Props, *> {
-  sendOperator: (calcKey: OperatorCalcKey) => void;
-  sendOperand: (calcKey: OperandCalcKey) => void;
-
-  constructor(props) {
-    super(props);
-    this.sendOperator = this.sendOperator.bind(this);
-    this.sendOperand = this.sendOperand.bind(this);
-  }
-
-  sendOperator(calcKey: OperatorCalcKey) {
+  sendOperator = (calcKey: OperatorCalcKey) => {
     const { userInput } = this.props;
     if (calcKey.operator === 'Enter') {
       this.props.addInputToStack(userInput);
     } else {
       this.props.sendOperatorToStack(calcKey, userInput);
     }
-  }
+  };
 
-  sendOperand(calcKey: OperandCalcKey) {
+  sendOperand = (calcKey: OperandCalcKey) => {
     this.props.sendOperandToStack(calcKey);
-  }
+  };
   render() {
     return (
       <div className="App">
