@@ -2,3 +2,8 @@
   background-color: lightblue;
   list-style: none;
 }
+
+.Result-panel {
+   height: 225px;
+   overflow-y: scroll;
+}

@@ -25,8 +25,8 @@ export const reduceStack = (stack: Stack = [], action: Action): Stack => {
       stack.unshift(Number(action.userInput));
       return stack;
     case 'REMOVE_FROM_STACK':
-      if (!action.userInput) {
-        stack.shift();
+      if (!action.userInput && stack.length > 0) {
+        stack = stack.slice(1, stack.length);
       }
       return stack;
     case 'USER_OPERATOR_INPUT':
