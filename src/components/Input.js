@@ -1,18 +1,13 @@
 // @flow
 import React from 'react';
 import '../css/Input.css';
-import classnames from 'classnames';
 
 type Props = {
   input: number,
 };
 
 const Input = ({ input }: Props) => (
-  <li
-    className={classnames({
-      Input: true,
-    })}
-  >
+  <li className="list-group-item Input">
     {input ? input : '0'}
   </li>
 );

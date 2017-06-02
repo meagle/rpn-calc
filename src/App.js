@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import logo from './logo.svg';
 import './css/App.css';
-// import { EnhancedUser } from './HOCAddDispatch';
 import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
 import OperandKey from './components/OperandKey';
 import OperatorKey from './components/OperatorKey';
@@ -51,19 +50,8 @@ class App extends Component<*, Props, *> {
           This calcuator functions like an RPN calculator.
         </p>
         <Results />
-        {/* <EnhancedUser name="Mark" status="active" /> */}
-        <div
-          style={{
-            display: 'grid',
-            'grid-template-columns': '2fr 1fr',
-          }}
-        >
-          <div
-            style={{
-              display: 'grid',
-              'grid-template-columns': 'repeat(4, 1fr)',
-            }}
-          >
+        <div className="App-keys-container">
+          <div className="App-operator-keys-container">
             {Object.keys(OPERATOR_KEYS).map(key => (
               <OperatorKey
                 key={key}
@@ -72,12 +60,7 @@ class App extends Component<*, Props, *> {
               />
             ))}
           </div>
-          <div
-            style={{
-              display: 'grid',
-              'grid-template-columns': 'repeat(3, 1fr)',
-            }}
-          >
+          <div className="App-operand-keys-container">
             {Object.keys(OPERAND_KEYS).map(key => (
               <OperandKey
                 key={key}

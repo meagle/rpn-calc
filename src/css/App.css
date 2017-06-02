@@ -17,6 +17,21 @@
   font-size: large;
 }
 
+.App-keys-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.App-operator-keys-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.App-operand-keys-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .User {
   padding: 10px;
   margin: 20px;
