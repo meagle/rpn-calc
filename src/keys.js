@@ -1,5 +1,8 @@
 // @flow
 import type { OperandCalcKey, OperatorCalcKey } from './types';
+import compose from 'ramda/src/compose';
+
+const toRadians = angle => angle * (Math.PI / 180);
 
 const generateOperands = () => {
   return [
@@ -64,7 +67,7 @@ export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
   },
   sqrt: {
     arity: 1,
-    keyValue: 's',
+    keyValue: 'q',
     operator: 'sqrt',
     fn: n => Math.sqrt(n),
   },
@@ -94,8 +97,26 @@ export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
   },
   chs: {
     arity: 1,
-    keyValue: 'c',
+    keyValue: 'C',
     operator: 'CHS',
     fn: x => x * -1,
+  },
+  sin: {
+    arity: 1,
+    keyValue: 's',
+    operator: 'SIN',
+    fn: compose(Math.sin, toRadians),
+  },
+  cos: {
+    arity: 1,
+    keyValue: 'c',
+    operator: 'COS',
+    fn: compose(Math.cos, toRadians),
+  },
+  tan: {
+    arity: 1,
+    keyValue: 't',
+    operator: 'TAN',
+    fn: compose(toRadians, Math.tan),
   },
 };
