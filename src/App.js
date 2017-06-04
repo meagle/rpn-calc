@@ -5,6 +5,8 @@ import * as actions from './actions';
 import logo from './logo.svg';
 import './css/App.css';
 import { OPERAND_KEYS, OPERATOR_KEYS } from './keys';
+import Undo from './components/Undo';
+import Redo from './components/Redo';
 import OperandKey from './components/OperandKey';
 import OperatorKey from './components/OperatorKey';
 import Results from './components/Results';
@@ -59,6 +61,8 @@ class App extends Component<*, Props, *> {
                 sendOperatorKey={this.sendOperator}
               />
             ))}
+            <Undo />
+            <Redo />
           </div>
           <div className="App-operand-keys-container">
             {Object.keys(OPERAND_KEYS).map(key => (
@@ -69,7 +73,6 @@ class App extends Component<*, Props, *> {
               />
             ))}
           </div>
-
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 // @flow
 import { combineReducers } from 'redux';
+import undoable from 'redux-undo';
 import type { Stack, Action } from './types';
 
 export const reduceInput = (input: string = '', action: Action): string => {
@@ -22,8 +23,7 @@ export const reduceInput = (input: string = '', action: Action): string => {
 export const reduceStack = (stack: Stack = [], action: Action): Stack => {
   switch (action.type) {
     case 'ADD_TO_STACK':
-      stack.unshift(Number(action.userInput));
-      return stack;
+      return [Number(action.userInput), ...stack.slice(0, stack.length)];
     case 'REMOVE_FROM_STACK':
       if (!action.userInput && stack.length > 0) {
         stack = stack.slice(1, stack.length);
@@ -53,6 +53,6 @@ export const reduceStack = (stack: Stack = [], action: Action): Stack => {
 };
 
 export default combineReducers({
-  stack: reduceStack,
+  stack: undoable(reduceStack),
   input: reduceInput,
 });

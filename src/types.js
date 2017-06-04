@@ -45,7 +45,7 @@ export type Action =
   | RemoveStackAction;
 
 export type State = {|
-  stack: Stack,
+  stack: { present: Stack },
   input: string,
 |};
 

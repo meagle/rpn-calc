@@ -27,7 +27,7 @@ const Results = ({ input, stack }: Props) => (
 );
 
 const mapStateToProps = (state: State) => ({
-  stack: state.stack,
+  stack: state.stack.present,
   input: state.input,
 });
 
