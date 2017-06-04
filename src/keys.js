@@ -4,6 +4,8 @@ import compose from 'ramda/src/compose';
 
 const toRadians = angle => angle * (Math.PI / 180);
 
+const round = x => Math.round(x * 1000000) / 1000000;
+
 const generateOperands = () => {
   return [
     '1',
@@ -105,18 +107,18 @@ export const OPERATOR_KEYS: { [string]: OperatorCalcKey } = {
     arity: 1,
     keyValue: 's',
     operator: 'SIN',
-    fn: compose(Math.sin, toRadians),
+    fn: compose(round, Math.sin, toRadians),
   },
   cos: {
     arity: 1,
     keyValue: 'c',
     operator: 'COS',
-    fn: compose(Math.cos, toRadians),
+    fn: compose(round, Math.cos, toRadians),
   },
   tan: {
     arity: 1,
     keyValue: 't',
     operator: 'TAN',
-    fn: compose(toRadians, Math.tan),
+    fn: compose(round, Math.tan, toRadians),
   },
 };
