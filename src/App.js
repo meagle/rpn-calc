@@ -23,12 +23,15 @@ type Props = {
 class App extends Component<*, Props, *> {
   sendOperator = (calcKey: OperatorCalcKey) => {
     const { userInput } = this.props;
-    if (calcKey.keyValue === 'Enter') {
-      this.props.addInputToStack(userInput);
-    } else if (calcKey.keyValue === 'Backspace') {
-      this.props.removeFromStack(userInput);
-    } else {
-      this.props.sendOperatorToStack(calcKey, userInput);
+    switch (calcKey.keyValue) {
+      case 'Enter':
+        this.props.addInputToStack(userInput);
+        break;
+      case 'Backspace':
+        this.props.removeFromStack(userInput);
+        break;
+      default:
+        this.props.sendOperatorToStack(calcKey, userInput);
     }
     this.scrollToBottom();
   };

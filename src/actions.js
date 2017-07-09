@@ -13,7 +13,6 @@ export const removeFromStack = (userInput?: string): Action => ({
 });
 
 export const sendOperandToStack = (operandKey: OperandCalcKey): Action => {
-  // TODO: add a check to ensure we only get [0-9]|\.
   return {
     type: 'USER_NUMERIC_INPUT',
     key: operandKey,

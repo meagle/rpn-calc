@@ -6,26 +6,18 @@ const toRadians = angle => angle * (Math.PI / 180);
 
 const round = x => Math.round(x * 1000000) / 1000000;
 
-const generateOperands = () => {
-  return [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '0',
-    '.',
-  ].reduce((acc, val) => {
-    acc[val] = {
-      keyValue: val,
-      operand: val,
-    };
-    return acc;
-  }, {});
+export const generateOperands = () => {
+  return [...Array(10).keys(), '.']
+    .map(n => {
+      return n.toString();
+    })
+    .reduce((acc, val) => {
+      acc[val] = {
+        keyValue: val,
+        operand: val,
+      };
+      return acc;
+    }, {});
 };
 
 export const OPERAND_KEYS: { [string]: OperandCalcKey } = generateOperands();
